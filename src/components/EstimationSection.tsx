@@ -44,30 +44,31 @@ const EstimationSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="max-w-2xl mx-auto"
+          className="max-w-2xl mx-auto w-full px-4 sm:px-0"
         >
           {!submitted ? (
             <div className="bg-background rounded-2xl p-6 sm:p-10 shadow-2xl border border-border">
               {/* Stepper */}
-              <div className="flex items-center justify-between mb-8 overflow-x-auto pb-4 sm:pb-0">
+              <div className="flex items-center justify-between mb-8">
                 {steps.map((s, i) => (
-                  <div key={s.key} className="flex items-center">
+                  <div key={s.key} className="flex items-center flex-1 last:flex-none">
                     <button
                       onClick={() => setStep(i)}
-                      className="group flex flex-col items-center gap-2 focus:outline-none"
+                      className="group flex items-center justify-center focus:outline-none shrink-0"
+                      title={s.label}
                     >
                       <div
-                        className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-body font-semibold transition-all duration-300 ${
+                        className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-body font-semibold transition-all duration-300 ${
                           i <= step
-                            ? "bg-accent text-accent-foreground scale-110 shadow-lg"
+                            ? "bg-accent text-accent-foreground scale-110 shadow-md"
                             : "bg-muted text-muted-foreground hover:bg-muted/80"
                         }`}
                       >
-                        {i < step ? <CheckCircle className="w-4 h-4" /> : i + 1}
+                        {i < step ? <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4" /> : i + 1}
                       </div>
                     </button>
                     {i < steps.length - 1 && (
-                      <div className={`w-6 sm:w-8 lg:w-16 h-0.5 mx-2 transition-colors duration-500 ${i < step ? "bg-accent" : "bg-muted"}`} />
+                      <div className={`flex-1 h-0.5 mx-1 sm:mx-2 transition-colors duration-500 ${i < step ? "bg-accent" : "bg-muted"}`} />
                     )}
                   </div>
                 ))}
@@ -133,14 +134,23 @@ const EstimationSection = () => {
                 )}
               </div>
 
-              <div className="flex justify-between">
+              <div className="flex items-center justify-between gap-3 flex-wrap">
                 {step > 0 && (
-                  <Button variant="outline" onClick={() => setStep(step - 1)}>
+                  <Button variant="outline" onClick={() => setStep(step - 1)} className="shrink-0">
                     Précédent
                   </Button>
                 )}
-                <Button variant="champagne" onClick={nextStep} className="ml-auto">
-                  {step === steps.length - 1 ? "Je veux mon estimation ROY" : "Suivant"}
+                <Button
+                  variant="champagne"
+                  onClick={nextStep}
+                  className="ml-auto shrink-0 text-xs sm:text-sm px-4 sm:px-6 whitespace-normal text-center leading-tight"
+                >
+                  {step === steps.length - 1 ? (
+                    <span className="block sm:hidden">Mon estimation ROY</span>
+                  ) : null}
+                  {step === steps.length - 1 ? (
+                    <span className="hidden sm:block">Je veux mon estimation ROY</span>
+                  ) : "Suivant"}
                 </Button>
               </div>
             </div>
