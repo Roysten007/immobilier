@@ -57,7 +57,7 @@ const Navbar = () => {
 
         {/* CTA */}
         <div className="hidden lg:flex items-center gap-3">
-          <a href="tel:+33100000000" className="flex items-center gap-2">
+          <a href="tel:+33143405361" className="flex items-center gap-2">
             <Button variant={scrolled ? "champagne" : "hero-primary"} size="sm">
               <Phone className="w-4 h-4" />
               Nous appeler
@@ -94,10 +94,12 @@ const Navbar = () => {
                   {link.label}
                 </a>
               ))}
-              <Button variant="champagne" className="mt-4">
-                <Phone className="w-4 h-4" />
-                Nous appeler
-              </Button>
+              <a href="tel:+33143405361" className="block mt-4">
+                <Button variant="champagne" className="w-full">
+                  <Phone className="w-4 h-4" />
+                  Nous appeler
+                </Button>
+              </a>
             </nav>
           </motion.div>
         )}

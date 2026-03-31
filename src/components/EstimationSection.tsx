@@ -49,20 +49,25 @@ const EstimationSection = () => {
           {!submitted ? (
             <div className="bg-background rounded-2xl p-6 sm:p-10 shadow-2xl border border-border">
               {/* Stepper */}
-              <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center justify-between mb-8 overflow-x-auto pb-4 sm:pb-0">
                 {steps.map((s, i) => (
                   <div key={s.key} className="flex items-center">
-                    <div
-                      className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-body font-semibold transition-colors ${
-                        i <= step
-                          ? "bg-accent text-accent-foreground"
-                          : "bg-muted text-muted-foreground"
-                      }`}
+                    <button
+                      onClick={() => setStep(i)}
+                      className="group flex flex-col items-center gap-2 focus:outline-none"
                     >
-                      {i < step ? <CheckCircle className="w-4 h-4" /> : i + 1}
-                    </div>
+                      <div
+                        className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-body font-semibold transition-all duration-300 ${
+                          i <= step
+                            ? "bg-accent text-accent-foreground scale-110 shadow-lg"
+                            : "bg-muted text-muted-foreground hover:bg-muted/80"
+                        }`}
+                      >
+                        {i < step ? <CheckCircle className="w-4 h-4" /> : i + 1}
+                      </div>
+                    </button>
                     {i < steps.length - 1 && (
-                      <div className={`hidden sm:block w-8 lg:w-16 h-0.5 mx-1 ${i < step ? "bg-accent" : "bg-muted"}`} />
+                      <div className={`w-6 sm:w-8 lg:w-16 h-0.5 mx-2 transition-colors duration-500 ${i < step ? "bg-accent" : "bg-muted"}`} />
                     )}
                   </div>
                 ))}
@@ -79,6 +84,10 @@ const EstimationSection = () => {
                     {["Appartement", "Maison", "Villa", "Terrain"].map((t) => (
                       <button
                         key={t}
+                        onClick={() => {
+                          // Handle selection logic if needed, then move to next
+                          setStep(1);
+                        }}
                         className="p-4 rounded-xl border border-border bg-muted hover:border-accent hover:bg-accent/10 transition-all text-foreground font-body text-sm font-medium"
                       >
                         {t}
@@ -104,7 +113,12 @@ const EstimationSection = () => {
                 {step === 3 && (
                   <div className="grid grid-cols-3 gap-3">
                     {["Excellent", "Bon", "À rénover"].map((s) => (
-                      <button key={s} className="p-4 rounded-xl border border-border bg-muted hover:border-accent hover:bg-accent/10 transition-all text-foreground font-body text-sm font-medium">
+                      <button 
+                        key={s} 
+                        onClick={() => {
+                          setStep(4);
+                        }}
+                        className="p-4 rounded-xl border border-border bg-muted hover:border-accent hover:bg-accent/10 transition-all text-foreground font-body text-sm font-medium">
                         {s}
                       </button>
                     ))}

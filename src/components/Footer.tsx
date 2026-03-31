@@ -49,9 +49,19 @@ const Footer = () => {
                 </a>
               ))}
             </div>
-            <p className="font-body text-dark-surface-foreground/50 text-xs">
-              12 avenue de la République<br />69006 Lyon, France
-            </p>
+            <div className="space-y-2 font-body text-dark-surface-foreground/50 text-xs">
+              <p className="flex items-center gap-2">
+                <span className="text-champagne shrink-0">Tel :</span>
+                <a href="tel:+33143405361" className="hover:text-champagne transition-colors">01 43 40 53 61</a>
+              </p>
+              <p className="flex items-center gap-2">
+                <span className="text-champagne shrink-0">Email :</span>
+                <a href="mailto:rostendesign@gmail.com" className="hover:text-champagne transition-colors">rostendesign@gmail.com</a>
+              </p>
+              <p className="mt-2 leading-relaxed">
+                12 avenue de la République<br />69006 Lyon, France
+              </p>
+            </div>
           </div>
         </div>
 

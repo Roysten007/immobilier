@@ -25,59 +25,64 @@ const ContactSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Contact methods */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="space-y-6"
           >
-            <div className="flex items-start gap-4 p-6 bg-card rounded-xl border border-border">
-              <div className="bg-accent/15 rounded-full p-3">
-                <Phone className="w-5 h-5 text-accent" />
+            <div className="flex flex-col gap-4 h-full">
+              <div className="flex items-center gap-6 p-6 bg-card rounded-xl border border-border transition-all hover:shadow-md hover:border-accent/30 group">
+                <div className="bg-accent/15 rounded-full p-4 group-hover:bg-accent/20 transition-colors shrink-0">
+                  <Phone className="w-6 h-6 text-accent" />
+                </div>
+                <div>
+                  <h3 className="font-display text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-1">Appel direct</h3>
+                  <a href="tel:+33143405361" className="font-body text-foreground font-bold text-xl hover:text-accent transition-colors block">01 43 40 53 61</a>
+                  <p className="font-body text-xs text-muted-foreground mt-1 flex items-center gap-1 opacity-70">
+                    <Clock className="w-3 h-3" /> Lun-Sam • 9h-19h
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-display text-lg font-semibold text-foreground mb-1">Appel direct</h3>
-                <a href="tel:+33100000000" className="font-body text-accent font-semibold text-lg hover:underline">01 00 00 00 00</a>
-                <p className="font-body text-sm text-muted-foreground mt-1 flex items-center gap-1">
-                  <Clock className="w-3 h-3" /> Lun-Sam • 9h-19h
-                </p>
-              </div>
-            </div>
 
-            <div className="flex items-start gap-4 p-6 bg-card rounded-xl border border-border">
-              <div className="bg-green-500/15 rounded-full p-3">
-                <MessageCircle className="w-5 h-5 text-green-600" />
+              <div className="flex items-center gap-6 p-6 bg-card rounded-xl border border-border transition-all hover:shadow-md hover:border-green-500/30 group">
+                <div className="bg-green-500/15 rounded-full p-4 group-hover:bg-green-500/20 transition-colors shrink-0">
+                  <MessageCircle className="w-6 h-6 text-green-600" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-display text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-1">WhatsApp</h3>
+                  <div className="flex items-center justify-between gap-4 flex-wrap sm:flex-nowrap">
+                    <p className="font-body text-foreground font-bold text-xl">WhatsApp ROY</p>
+                    <Button size="sm" className="bg-green-600 hover:bg-green-700 text-primary-foreground font-body gap-2 px-6" asChild>
+                      <a href="https://wa.me/22943405361" target="_blank" rel="noopener noreferrer">
+                        <MessageCircle className="w-4 h-4" />
+                        Chatter
+                      </a>
+                    </Button>
+                  </div>
+                </div>
               </div>
-              <div>
-                <h3 className="font-display text-lg font-semibold text-foreground mb-1">WhatsApp ROY</h3>
-                <p className="font-body text-muted-foreground text-sm mb-2">Réponse rapide garantie</p>
-                <Button size="sm" className="bg-green-600 hover:bg-green-700 text-primary-foreground font-body">
-                  <MessageCircle className="w-4 h-4" />
-                  Écrire sur WhatsApp
-                </Button>
-              </div>
-            </div>
 
-            <div className="flex items-start gap-4 p-6 bg-card rounded-xl border border-border">
-              <div className="bg-accent/15 rounded-full p-3">
-                <Mail className="w-5 h-5 text-accent" />
+              <div className="flex items-center gap-6 p-6 bg-card rounded-xl border border-border transition-all hover:shadow-md hover:border-accent/30 group">
+                <div className="bg-accent/15 rounded-full p-4 group-hover:bg-accent/20 transition-colors shrink-0">
+                  <Mail className="w-6 h-6 text-accent" />
+                </div>
+                <div>
+                  <h3 className="font-display text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-1">Email</h3>
+                  <a href="mailto:rostendesign@gmail.com" className="font-body text-foreground font-bold text-xl hover:text-accent transition-colors block break-all">rostendesign@gmail.com</a>
+                  <p className="font-body text-xs text-muted-foreground mt-1 opacity-70">Projets & documents détaillés</p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-display text-lg font-semibold text-foreground mb-1">Email</h3>
-                <a href="mailto:contact@royimmobilier.fr" className="font-body text-accent hover:underline">contact@royimmobilier.fr</a>
-                <p className="font-body text-sm text-muted-foreground mt-1">Pour les projets détaillés</p>
-              </div>
-            </div>
 
-            <div className="flex items-start gap-4 p-6 bg-card rounded-xl border border-border">
-              <div className="bg-accent/15 rounded-full p-3">
-                <MapPin className="w-5 h-5 text-accent" />
-              </div>
-              <div>
-                <h3 className="font-display text-lg font-semibold text-foreground mb-1">Notre agence</h3>
-                <p className="font-body text-muted-foreground text-sm">12 avenue de la République, 69006 Lyon</p>
+              <div className="flex items-center gap-6 p-6 bg-card rounded-xl border border-border transition-all hover:shadow-md hover:border-accent/30 group">
+                <div className="bg-accent/15 rounded-full p-4 group-hover:bg-accent/20 transition-colors shrink-0">
+                  <MapPin className="w-6 h-6 text-accent" />
+                </div>
+                <div>
+                  <h3 className="font-display text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-1">Agence</h3>
+                  <p className="font-body text-foreground font-bold text-lg leading-tight">12 avenue de la République,<br />69006 Lyon</p>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -91,9 +96,9 @@ const ContactSection = () => {
             <div className="bg-card rounded-2xl p-6 sm:p-8 border border-border shadow-lg">
               <h3 className="font-display text-xl font-bold text-foreground mb-6">Formulaire de contact</h3>
               <form className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <input type="text" placeholder="Prénom" className="bg-muted rounded-lg px-4 py-3 text-foreground text-sm font-body placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent" />
-                  <input type="tel" placeholder="Téléphone" className="bg-muted rounded-lg px-4 py-3 text-foreground text-sm font-body placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent" />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <input type="text" placeholder="Prénom" className="bg-muted rounded-lg px-4 py-3 text-foreground text-sm font-body placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent w-full" />
+                  <input type="tel" placeholder="Téléphone" className="bg-muted rounded-lg px-4 py-3 text-foreground text-sm font-body placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent w-full" />
                 </div>
                 <select className="w-full bg-muted rounded-lg px-4 py-3 text-foreground text-sm font-body focus:outline-none focus:ring-2 focus:ring-accent">
                   <option>Type de projet</option>
